@@ -14,8 +14,9 @@ def getTicket(bwr):
     sleep(1)
     e = bwr.find_by_id("seatPos")
     e.find_by_xpath("//div[@title='1排45座']").click()
+    e.find_by_xpath("//span[contains(@id, 'totalPrice')]").click()
     sleep(1)
-    sleep(60)
+    sleep(600)
 
 
 def classifyOcr(img_url):
@@ -31,20 +32,17 @@ def classifyOcr(img_url):
 
 def login(bwr):
     bwr.find_by_text(u" 登录/注册").click()
-    sleep(1)
     # bwr.find_by_text(u" 密码登录 ").click()
     # -- 选择密码登录页签
     bwr.find_by_xpath("//div[@class='flex cur-hand font-666 tabActive']").click()
-    sleep(1)
     el_form = bwr.find_by_xpath("//div[@class='login-content']")
     el_form.find_by_xpath("//input[@placeholder='请填写手机号码']").fill(user_name)
     el_form.find_by_xpath("//input[@type='password']").fill(password)
     img_url = el_form.find_by_xpath("//img[contains(@src, 'getPicCode')]")['src']
     ocr_str = classifyOcr(img_url)
-    el_form.find_by_text(u"看不清,换一张").click()
     el_form.find_by_xpath("//input[@placeholder='请填写验证码']").fill(ocr_str)
     el_form.find_by_text(u"登录").click()
-    sleep(100)
+    sleep(1)
 
 
 def flow():

@@ -1,4 +1,4 @@
-#!/Users/huangbaoying/workspace/baolipy/venv/bin/python
+#!/Users/huangbaoying/workspace/polyticket/baolipy/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
